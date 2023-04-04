@@ -13,8 +13,8 @@ var romanToInt = function (s) {
         'D': 500,
         'M': 1000
     }
-    let int = 0;
-    for (let i = 0; i < s.length; i++) {
+    let int = map[s[s.length - 1]];
+    for (let i = 0; i < s.length - 1; i++) {
         if (map[s[i]] < map[s[i + 1]]) {
             int -= map[s[i]];
         }

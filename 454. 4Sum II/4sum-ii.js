@@ -16,9 +16,9 @@ var fourSumCount = function (nums1, nums2, nums3, nums4) {
     let count = 0;
     for (let i = 0; i < nums3.length; i++) {
         for (let j = 0; j < nums4.length; j++) {
-            const num = -(nums3[i] + nums4[j]);
-            if (nums12.has(num)) {
-                count += nums12.get(num);
+            const nums = nums12.get(-(nums3[i] + nums4[j]));
+            if (nums) {
+                count += nums;
             }
         }
     }

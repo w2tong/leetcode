@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 
-// Solution 1 (using Set)
+// Solution 1 (using Set) better performance than cycle detection
 var isHappy = function (n) {
     const seen = new Set();
     while (n !== 1) {

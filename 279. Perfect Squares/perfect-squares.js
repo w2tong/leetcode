@@ -3,17 +3,18 @@
  * @return {number}
  */
 
-const dp = [0];
+const memo = [0];
 
 var numSquares = function (n) {
-    if (dp[n]) return dp[n];
+    if (memo[n]) return memo[n];
     for (let i = 1; i <= n; i++) {
-        let j = 1;
         let min = Infinity;
+        let j = 1;
         while (i - j ** 2 >= 0) {
-            min = Math.min(min, dp[i - j++ ** 2] + 1);
+            min = Math.min(min, memo[i - j ** 2] + 1);
+            j++;
         }
-        dp[i] = min;
+        memo[i] = min;
     }
-    return dp[n];
+    return memo[n];
 };

@@ -21,3 +21,12 @@ var hasCycle = function (head) {
     }
     return false;
 };
+
+var hasCycle2 = function (head) {
+    while (head) {
+        if (head.visited === true) return true;
+        head.visited = true;
+        head = head.next;
+    }
+    return false;
+};

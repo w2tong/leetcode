@@ -19,25 +19,15 @@ var orangesRotting = function (grid) {
         const len = queue.length;
         for (let i = 0; i < len; i++) {
             const [r, c] = queue.shift();
-            if (r - 1 >= 0 && grid[r - 1][c] === 1) {
-                queue.push([r - 1, c]);
-                grid[r - 1][c] = 2;
-                freshCount--;
-            }
-            if (r + 1 < m && grid[r + 1][c] === 1) {
-                queue.push([r + 1, c]);
-                grid[r + 1][c] = 2;
-                freshCount--;
-            }
-            if (c - 1 >= 0 && grid[r][c - 1] === 1) {
-                queue.push([r, c - 1]);
-                grid[r][c - 1] = 2;
-                freshCount--;
-            }
-            if (c + 1 < n && grid[r][c + 1] === 1) {
-                queue.push([r, c + 1]);
-                grid[r][c + 1] = 2;
-                freshCount--;
+            for (const [dr, dc] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
+                const rr = r + dr;
+                const cc = c + dc;
+                if (rr < 0 || rr >= m || cc < 0 || cc >= n) continue;
+                if (grid[rr][cc] === 1) {
+                    queue.push([rr, cc]);
+                    grid[rr][cc] = 2;
+                    freshCount--;
+                }
             }
         }
         if (queue.length > 0) count++;
